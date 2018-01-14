@@ -2,9 +2,13 @@
 
 Auditing and changing massive NTFS permissions on a Windows directory
 
+
+
 SYNTAX : 
 
 	.\NTFS.ps1 -Action '[ ACL | Audit | Child-Audit | High | Medium | Low ]' -Path '[Directory]' -Path2 '[Directory]' -Recurse '[yes]' -Account '[Account]'
+	
+	
 
 PARAMETERS :
 
@@ -59,6 +63,8 @@ PARAMETERS :
 	- Account -     Specifies the user object for which the action is to be performed.
 
 
+
+
 EXAMPLES :
 
 	- 1 - 		.\NTFS.ps1 -Action 'Child-Audit' -Path 'C:\' -Recurse 'yes'
@@ -71,6 +77,10 @@ EXAMPLES :
 			Recursive application of the rights proposed by the high security policy on the D:\ partition, all users of the system combined.
 
 
+
+
 SEE ALSO :
 
 https://github.com/raandree/NTFSSecurity 
+
+
