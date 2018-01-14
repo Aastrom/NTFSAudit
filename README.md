@@ -1,6 +1,6 @@
 # NTFSProject
+
 Auditing and changing massive NTFS permissions on a Windows directory
-by Mélodie BERNARD, Jacques RIMBAULT, Antoine HENRY
 
 SYNTAX : .\NTFS.ps1 -Action '[ ACL | Audit | Child-Audit | High | Medium | Low ]' -Path '[Directory]' -Path2 '[Directory]' -Recurse '[yes]' -Account '[Account]'
 
