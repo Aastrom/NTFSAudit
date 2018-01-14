@@ -2,7 +2,9 @@
 
 Auditing and changing massive NTFS permissions on a Windows directory
 
-SYNTAX : .\NTFS.ps1 -Action '[ ACL | Audit | Child-Audit | High | Medium | Low ]' -Path '[Directory]' -Path2 '[Directory]' -Recurse '[yes]' -Account '[Account]'
+SYNTAX : 
+
+	.\NTFS.ps1 -Action '[ ACL | Audit | Child-Audit | High | Medium | Low ]' -Path '[Directory]' -Path2 '[Directory]' -Recurse '[yes]' -Account '[Account]'
 
 PARAMETERS :
 
