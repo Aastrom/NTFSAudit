@@ -1,10 +1,6 @@
 # NTFSProject
-Outil de détection et de modification de masse de permissions NTFS
-
-# Windows Server 2016 Administration
-# ESGI 2A - Mélodie BERNARD, Jacques RIMBAULT, Antoine HENRY
-
-# Auditing and changing massive NTFS permissions on a Windows directory
+Auditing and changing massive NTFS permissions on a Windows directory
+by Mélodie BERNARD, Jacques RIMBAULT, Antoine HENRY
 
 SYNTAX : .\NTFS.ps1 -Action '[ ACL | Audit | Child-Audit | High | Medium | Low ]' -Path '[Directory]' -Path2 '[Directory]' -Recurse '[yes]' -Account '[Account]'
 
