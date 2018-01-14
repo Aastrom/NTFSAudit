@@ -1,0 +1,76 @@
+# Administration Windows Server 2016
+# ESGI 2A - Mélodie BERNARD, Jacques RIMBAULT, Antoine HENRY
+
+# Audit et modification en masse de permissions NTFS sur un répertoire Windows
+
+SYNTAXE : .\NTFS.ps1 -Action '[ ACL | Audit | Child-Audit | High | Medium | Low ]' -Path '[Répertoire]' -Path2 '[Répertoire]' -Recurse '[yes]' -Account '[Account]'
+
+PARAMETRES :
+
+	- Action -
+	
+		- ACL -           Application d'une ACL de type texte $Path sur le répertoire $Path2. Accepte la récursivité.
+              			  
+				  Syntaxe du fichier texte : $Account ($Right [Allow | Deny]) $Access
+	             		  Exemple : Utilisateurs Allow Modify --> ($Right)Add-NTFSAccess -Path $Path2 -Account $Account -Recurse $Recurse -AccessRights $Access
+
+
+		- Audit -         Audit des permissions NTFS du répertoire $Path.
+
+
+		- Child-Audit -   Audit récursif des permissions NTFS du répertoire $Path. 
+
+
+		- Help -	  Affiche ce panneau d'aide. :)
+ 
+
+		- High -          Application de la politique de sécurité élevée (levels/high-sec.ps1).
+			          Utilisateurs : Aucun droit
+			          Utilisateurs Authentifiés : Lecture seule
+			          Système : Lecture et exécution
+			          Administrateurs : Contrôle total
+				  Autre : Lecture seule
+
+
+		- Medium -        Application de la politique de sécurité modérée (levels/medium-sec.ps1).
+			          Utilisateurs : Lecture et exécution
+			          Utilisateurs Authentifiés : Lecture et exécution
+			          Système : Lecture et exécution
+			          Administrateurs : Contrôle total
+
+
+		- Low -           Application de la politique de sécurité faible (levels/low-sec.ps1).
+			          Utilisateurs : Modification
+			          Utilisateurs Authentifiés : Modification
+			          Système : Contrôle total
+			          Administrateurs : Contrôle total
+
+
+	- Path - 	Indique le répertoire dans lequel l'action doit être effectuée. 
+			Si $Action = 'ACL', $Path indique le chemin du fichier texte utilisateur contenant les ACL à appliquer le répertoire $Path2.
+
+
+	- Path2 -       Indique le répertoire dans lequel les ACL contenues dans le fichier texte indiqué dans $Path doivent être appliquées.
+
+
+	- Recurse -     Active la récursivité.
+
+
+	- Account -     Indique l'objet utilisateur pour lequel l'action doit être effectuée.
+
+
+EXEMPLES :
+
+	- 1 - 		.\NTFS.ps1 -Action 'Child-Audit' -Path 'C:\' -Recurse 'yes'
+			Audit récursif de la partition C:\ du système.
+
+	- 2 - 		.\NTFS.ps1 -Action 'ACL' -Path 'C:\Users\user\acl.txt' -Path2 'D:\Files' -Recurse 'yes'
+			Application récursive des droits proposés par l'utilisateur dans le fichier texte acl.txt sur le répertoire D:\Files.
+
+	- 3 - 		.\NTFS.ps1 -Action 'High' -Path 'D:\' -Recurse 'yes'
+			Application récursive des droits proposés par la politique de sécurité élevée sur la partition D:\.
+
+
+VOIR AUSSI :
+
+https://github.com/raandree/NTFSSecurity 
