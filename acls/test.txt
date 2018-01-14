@@ -1,0 +1,71 @@
+﻿# ACL User File
+# SYNTAX : $Account [ Allow | Deny ] $Right $Path
+#
+# $Right  
+#						Full Control		Modify		Read & Execute		List Folder Contents		Read		Write
+# 'None' ---------------------------------------            ------------      ----------              ----------                    ------------    ------------     --------
+# 'Read' ---------------------------------------            ------------      ----------              ----------                    ------------ x  ------------     --------
+# 'GenericRead' --------------------------------            ------------      ----------              ----------                    ------------ x  ------------     --------
+# 'Write' --------------------------------------            ------------      ----------              ----------                    ------------    ------------  x  --------
+# 'GenericWrite' -------------------------------            ------------      ----------              ----------                    ------------    ------------  x  --------
+# 'GenericExecute' -----------------------------            ------------      ----------      x       ----------                    ------------ x  ------------     --------
+# 'ReadAndExecute' -----------------------------            ------------      ----------      x       ----------                    ------------ x  ------------     --------
+# 'GenericAll' ---------------------------------            ------------      ----------      x       ----------                    ------------ x  ------------  x  --------
+# 'Modify' -------------------------------------            ------------  x   ----------              ----------         x          ------------ x  ------------  x  --------
+# 'Delete' -------------------------------------     x      ------------  x   ----------              ----------                    ------------    ------------     --------
+# 'ChangePermissions' --------------------------     x      ------------      ----------              ----------                    ------------    ------------     --------
+# 'TakeOwnership' ------------------------------     x      ------------      ----------              ----------                    ------------    ------------     --------
+# 'DeleteSubdirectoriesAndFiles' ---------------     x      ------------      ----------              ----------                    ------------    ------------     --------
+# 'WriteAttributes' ----------------------------     x      ------------  x   ----------              ----------                    ------------    ------------  x  --------
+# 'CreateFiles' --------------------------------     x      ------------  x   ----------              ----------                    ------------    ------------  x  --------
+# 'CreateDirectories' --------------------------     x      ------------  x   ----------              ----------                    ------------    ------------  x  --------
+# 'AppendData' ---------------------------------     x      ------------  x   ----------              ----------                    ------------    ------------  x  --------
+# 'WriteExtendedAttributes' --------------------     x      ------------  x   ----------              ----------                    ------------    ------------  x  --------
+# 'Traverse' -----------------------------------     x      ------------  x   ----------      x       ----------         x          ------------    ------------     --------
+# 'ExecuteFile' --------------------------------     x      ------------  x   ----------      x       ----------         x          ------------    ------------     --------
+# 'ReadData' -----------------------------------     x      ------------  x   ----------      x       ----------         x          ------------ x  ------------     --------
+# 'ListDirectory' ------------------------------     x      ------------  x   ----------      x       ----------         x          ------------ x  ------------     --------
+# 'ReadAttributes' -----------------------------     x      ------------  x   ----------      x       ----------         x          ------------ x  ------------     --------
+# 'ReadExtendedAttributes' ---------------------     x      ------------  x   ----------      x       ----------         x          ------------ x  ------------     --------
+# 'ReadPermissions' ----------------------------     x      ------------  x   ----------      x       ----------         x          ------------ x  ------------  x  --------
+# 'Synchronize' --------------------------------     x      ------------  x   ----------      x       ----------         x          ------------ x  ------------  x  --------
+# 'FullControl' --------------------------------     x      ------------  x   ----------      x       ----------         x          ------------ x  ------------  x  --------
+
+# Examples : 
+# Utilisateurs Deny Modify
+# Utilisateurs_Authentifiés Allow Modify
+# Système Allow FullControl
+# Administrateurs Allow FullControl
+
+# Will result in :
+# Add-NTFSAccess -Path $Path -Account 'Utilisateurs' -Recurse $Recurse -AccessRights Modify
+# Add-NTFSAccess -Path $Path -Account 'Utilisateurs Authentifiés' -Recurse $Recurse -AccessRights Modify
+# Add-NTFSAccess -Path $Path -Account 'Système' -Recurse $Recurse -AccessRights FullControl
+# Add-NTFSAccess -Path $Path -Account 'Administrateurs' -Recurse $Recurse -AccessRights FullControl
+
+# Write your ACL Here
+
+Utilisateurs Deny FullControl
+Utilisateurs Deny ReadPermissions
+Utilisateurs Deny ReadExtendedAttributes
+Utilisateurs Deny WriteExtendedAttributes
+Utilisateurs Deny DeleteSubdirectoriesAndFiles
+Utilisateurs Deny TakeOwnership
+Utilisateurs Deny ChangePermissions
+Utilisateurs Deny Delete
+Utilisateurs Allow Read
+Utilisateurs Allow GenericRead
+Utilisateurs Allow Write
+Utilisateurs Allow GenericWrite
+Utilisateurs Allow GenericExecute
+Utilisateurs Allow ReadAndExecute
+Utilisateurs Allow GenericAll
+Utilisateurs Allow CreateFiles
+Utilisateurs Allow CreateDirectories
+Utilisateurs Allow AppendData
+Utilisateurs Allow Traverse
+Utilisateurs Allow ExecuteFile
+Utilisateurs Allow ReadData
+Utilisateurs Allow ListDirectory
+
+# ACL End
