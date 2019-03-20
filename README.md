@@ -1,6 +1,6 @@
 # NTFSAudit
 
-Auditing and changing massive NTFS permissions on a Windows NTFS directory or partition
+Auditing and changing massive NTFS permissions over a Windows NTFS directory or partition
 
 
 
@@ -20,10 +20,10 @@ Auditing and changing massive NTFS permissions on a Windows NTFS directory or pa
 	             		  Example : Users Allow Modify --> Add-NTFSAccess -Path $Path2 -Account $Account -Recurse $Recurse -AccessRights $Access
 
 
-		- Audit -         Auditing NTFS permissions in the $Path directory.
+		- Audit -         Auditing NTFS permissions over the $Path directory.
 
 
-		- Child-Audit -   Recursive audit of NTFS permissions in the $Path directory 
+		- Child-Audit -   Recursive audit of NTFS permissions over the $Path directory 
 
 
 		- Help -	  Displays this help panel. :)
@@ -71,10 +71,10 @@ Auditing and changing massive NTFS permissions on a Windows NTFS directory or pa
 			Recursive audit of the C: \ system partition.
 
 	- 2 - 		.\NTFS.ps1 -Action 'ACL' -Path 'C:\Users\user\acl.txt' -Path2 'D:\Files' -Recurse 'yes'
-			Recursive application of the rights proposed by the user in the text file acl.txt on the directory D:\Files.
+			Recursive application of the rights proposed by the user in the text file acl.txt over the directory D:\Files.
 
 	- 3 - 		.\NTFS.ps1 -Action 'High' -Path 'D:\' -Recurse 'yes'
-			Recursive application of the rights proposed by the high security policy on the D:\ partition, all users of the system combined.
+			Recursive application of the rights proposed by the high security policy over the D:\ partition, all system users combined.
 
 
 
