@@ -1,6 +1,6 @@
 # NTFSAudit
 
-Auditing and changing massive NTFS permissions on a Windows directory
+Auditing and changing massive NTFS permissions on a Windows NTFS directory or partition
 
 
 
